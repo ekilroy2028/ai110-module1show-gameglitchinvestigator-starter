@@ -11,8 +11,13 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 🛠️ Setup
 
+FOR PC:
 1. Install dependencies: `pip install -r requirements.txt`
 2. Run the broken app: `python -m streamlit run app.py`
+
+FOR MAC:
+1. Install dependencies: `pip3 install -r requirements.txt`
+2. Run the app: `python3 -m streamlit run app.py`
 
 ## 🕵️‍♂️ Your Mission
 
@@ -23,15 +28,27 @@ It wrote the code, ran away, and now the game is unplayable.
    - Run `pytest` in your terminal.
    - Keep fixing until all tests pass!
 
+
+
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [x] **Game purpose:** A number guessing game where the player tries to guess a secret number within a limited number of attempts, receiving hints after each guess.
+- [x] **Bugs found:**
+  - Secret number regenerated on every Streamlit rerun (not stored in session state)
+  - Attempts counter initialized to `1` instead of `0`, causing early game over
+  - Hints were backwards — "Go HIGHER!" showed for too-high guesses and vice versa
+  - New Game button did not properly reset all session state
+  - Secret number was visible in the Developer Debug Info panel (cheating risk)
+- [x] **Fixes applied:**
+  - Stored `secret` in `st.session_state` so it persists across reruns
+  - Changed attempts initialization from `1` to `0`
+  - Swapped hint messages in `check_guess()` in `logic_utils.py`
+  - Implemented full session state reset on New Game
+  - Replaced secret display with `"(hidden)"` in debug panel
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+- [x] ![alt text](win.png)
 
 ## 🚀 Stretch Features
 
