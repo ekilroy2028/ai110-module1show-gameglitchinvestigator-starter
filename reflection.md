@@ -7,9 +7,6 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 - What did the game look like the first time you ran it?
 - List at least two concrete bugs you noticed at the start  
   (for example: "the secret number kept changing" or "the hints were backwards").
-  •When the game is over, we cannot reset after pressing the new game button. The number of attempts is not recording correctly, which causes the game to end early.  
-  •The hints for the number of guesses are incorrect; they always aim higher. And the number guessed is put in.   
-  •The secret guest shows the answer. 
 
 ---
 
@@ -43,13 +40,8 @@ Yes, Copilot helped me understand the test failures and suggested fixes like add
 ## 4. What did you learn about Streamlit and state?
 
 - In your own words, explain why the secret number kept changing in the original app.
-The secret number kept changing because it was generated randomly on every Streamlit rerun without being stored in session state. Each time the user interacted with the app, the entire script ran again, creating a new random number instead of remembering the original one.
-
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
-Streamlit reruns are like refreshing a web page - every time you click a button or enter text, the entire Python script runs from top to bottom to update the display. Session state is like browser cookies for your app; it lets you save data (like the secret number) between these reruns so the game remembers things across interactions.
-
 - What change did you make that finally gave the game a stable secret number?
-I added code to check if 'secret' exists in st.session_state, and only generate a new random number if it doesn't. This ensures the secret is set once when the app starts and persists across all reruns.
 
 ---
 
