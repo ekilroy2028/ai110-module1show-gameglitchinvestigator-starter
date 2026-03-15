@@ -35,4 +35,28 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 🚀 Stretch Features
 
-- [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+### ✅ Challenge 4: Enhanced Game UI
+
+
+
+The following UI enhancements were added to `app.py` **without modifying any core logic** in `logic_utils.py`:
+
+#### 🌡️ Hot/Cold Temperature System
+Each guess triggers a color-coded temperature rating based on proximity to the secret number:
+
+| Distance from Secret | Emoji       | Label      | Color Theme |
+|----------------------|-------------|------------|-------------|
+| Exact match          | 🎯          | EXACT!     | 🔴 Red      |
+| 1–3 away             | 🔥🔥🔥      | Scorching! | 🔴 Red      |
+| 4–8 away             | 🔥🔥        | Hot!       | 🟠 Amber    |
+| 9–15 away            | 🔆          | Warm       | 🟢 Green    |
+| 16–25 away           | ❄️          | Cold       | 🔵 Blue     |
+| 26+ away             | 🧊🧊        | Freezing!  | 🟣 Indigo   |
+
+#### 📊 Live Stats Bar
+A four-column metric strip always shows: attempts left, guesses made, current score, and active range.
+
+#### 📋 Session Summary Table
+A running table updates after each guess showing every guess, direction hint, temperature rating, and score delta for that turn.
+
+![alt text](screenshot_challenge4.png)
