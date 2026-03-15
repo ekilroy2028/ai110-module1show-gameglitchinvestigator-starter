@@ -37,8 +37,6 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ### ✅ Challenge 4: Enhanced Game UI
 
-
-
 The following UI enhancements were added to `app.py` **without modifying any core logic** in `logic_utils.py`:
 
 #### 🌡️ Hot/Cold Temperature System
