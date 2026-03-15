@@ -16,12 +16,13 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 ## 2. How did you use AI as a teammate?
 
 - Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
+I used GitHub Copilot in VS Code for this project, including Chat, Inline Chat, and Agent mode for refactoring.
+
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
+Copilot suggested refactoring the core game logic functions (check_guess, parse_guess, etc.) from app.py to logic_utils.py for better separation of concerns. I verified this by running the refactored code - the functions imported correctly, tests passed, and the app still worked as expected.
+
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
-
-• I went into Copilot, listed all three fixes I wanted to address. Then, I also included a note with each fix explaining why it was fixed and what happened. Afterward, I reran the test and discovered that the higher/lower issue still appeared as higher. I took that information and entered it into Copilot again, asking it to fix the problem once more, and repeated the process. This time, the game is working.  
-
-• I only use Copilot for this project. I wanted to establish a solid foundation for how to fix code, and I didn't want another program to interfere. In the previous activity, Tinker_ByteBites, I used Claude just to get a feel for how this process works. I found that using Claude is kind of like having a tutor or teacher; they talk to the program as if I were talking to a professor. It was very helpful in understanding how the coding process we're learning actually works. And from the insight I gained into the Tinker_ByteBites project, I carried that knowledge into The Game Glitch project.
+Initially, Copilot's hint fix in check_guess had the messages backwards (saying "Go HIGHER!" for too high guesses). I verified this by running the app and seeing incorrect hints, then corrected it by swapping the messages and confirmed the fix with pytest.
 
 ---
 
@@ -42,14 +43,23 @@ Yes, Copilot helped me understand the test failures and suggested fixes like add
 ## 4. What did you learn about Streamlit and state?
 
 - In your own words, explain why the secret number kept changing in the original app.
+The secret number kept changing because it was generated randomly on every Streamlit rerun without being stored in session state. Each time the user interacted with the app, the entire script ran again, creating a new random number instead of remembering the original one.
+
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+Streamlit reruns are like refreshing a web page - every time you click a button or enter text, the entire Python script runs from top to bottom to update the display. Session state is like browser cookies for your app; it lets you save data (like the secret number) between these reruns so the game remembers things across interactions.
+
 - What change did you make that finally gave the game a stable secret number?
+I added code to check if 'secret' exists in st.session_state, and only generate a new random number if it doesn't. This ensures the secret is set once when the app starts and persists across all reruns.
 
 ---
 
 ## 5. Looking ahead: your developer habits
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
+I want to reuse the habit of adding detailed comments with #FIX tags explaining AI collaboration, as it helps document the development process and makes code more maintainable.
+
 - What is one thing you would do differently next time you work with AI on a coding task?
+Next time, I would start with more specific prompts and verify AI suggestions more thoroughly before applying them, rather than accepting complex changes at once.
+
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+This project showed me that AI-generated code can be a great starting point but often contains subtle bugs that require human debugging skills. It taught me to approach AI suggestions critically, test thoroughly, and collaborate with AI as a teammate rather than relying on it completely.
